@@ -8,30 +8,31 @@ const Header = (props) => {
             </Logo>
             <Menu>
                 <a href="/">
-                    <img src="/images/home-icon.svg" alt="HOME" />
-                    <span>HOME</span>
+                    <img src="/images/home-icon.svg" alt="Home" />
+                    <span>Home</span>
                 </a>
                 <a>
-                    <img src="/images/search-icon.svg" alt="SEARCH" />
-                    <span>SEARCH</span>
+                    <img src="/images/search-icon.svg" alt="Search" />
+                    <span>Search</span>
                 </a>
                 <a>
-                    <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
-                    <span>WATCHLIST</span>
+                    <img src="/images/watchlist-icon.svg" alt="Watchlist" />
+                    <span>Watchlist</span>
                 </a>
                 <a>
-                    <img src="/images/original-icon.svg" alt="ORIGINALS" />
-                    <span>ORIGINALS</span>
+                    <img src="/images/original-icon.svg" alt="Originals" />
+                    <span>Originals</span>
                 </a>
                 <a>
-                    <img src="/images/movie-icon.svg" alt="MOVIES" />
-                    <span>MOVIES</span>
+                    <img src="/images/movie-icon.svg" alt="Movies" />
+                    <span>Movies</span>
                 </a>
                 <a>
-                    <img src="/images/series-icon.svg" alt="SERIES" />
-                    <span>SERIES</span>
+                    <img src="/images/series-icon.svg" alt="Series" />
+                    <span>Series</span>
                 </a>
             </Menu>
+            <Login>Login</Login>
         </Navigation>
     )
 }
@@ -71,6 +72,7 @@ const Menu = styled.div`
     position: relative;
     margin-right: auto;
     margin-left: 25px;
+    text-transform: uppercase;
     a {
         display: flex;
         align-items: center;
@@ -122,5 +124,21 @@ const Menu = styled.div`
 
     @media (max-width: 768px) {
         display: none;
+    }
+`
+
+const Login = styled.a`
+    text-transform: uppercase;
+    background-color: #090b13;
+    padding: 8px 16px;
+    border: 1px solid white;
+    border-radius: 5px;
+    letter-spacing: 1.5px;
+    transition: all 200ms ease 0s;
+
+    &:hover {
+        color: #000;
+        background-color: #f9f9f9;
+        border-color: transparent;
     }
 `
