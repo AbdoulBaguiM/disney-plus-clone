@@ -4,8 +4,8 @@ const Login = (props) => {
     return (
         <Container>
             <Content>
-                <CTA>
-                    <CTALogoOne src="/images/cta-logo-one.svg" alt="" />
+                <Section>
+                    <Logo src="/images/cta-logo-one.svg" alt="" />
                     <SignUp>Sign Up Now {">"} </SignUp>
                     <Description>
                         Get Premier Access to Raya and the Last Dragon for an
@@ -13,8 +13,8 @@ const Login = (props) => {
                         03/26/23, the price of Disney+ and The Disney Bundle
                         will increase by $1.
                     </Description>
-                    <CTALogoTwo src="/images/cta-logo-two.png" alt="" />
-                </CTA>
+                    <Flyer src="/images/cta-logo-two.png" alt="" />
+                </Section>
                 <BackgroundImage />
             </Content>
         </Container>
@@ -58,14 +58,14 @@ const BackgroundImage = styled.div`
     z-index: -1;
 `
 
-const CTA = styled.div`
+const Section = styled.div`
     max-width: 650px;
     width: 100%;
     display: flex;
     flex-direction: column;
 `
 
-const CTALogoOne = styled.img`
+const Logo = styled.img`
     margin-bottom: 12px;
     max-width: 600px;
     min-height: 1px;
@@ -97,7 +97,7 @@ const Description = styled.p`
     line-height: 1.5;
     letter-spacing: 1px;
 `
-const CTALogoTwo = styled.img`
+const Flyer = styled.img`
     max-width: 600px;
     margin-bottom: 20px;
     display: inline-block;
