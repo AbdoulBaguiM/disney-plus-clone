@@ -1,8 +1,21 @@
 import styled from "styled-components"
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 import { auth, provider } from "../firebase"
+import { useDispatch, useSelector } from "react-redux/es/exports"
+import { useNavigate } from "react-router-dom"
+import {
+    selectUserName,
+    selectUserPhoto,
+    selectUserLoginDetails,
+    setUserLoginDetails,
+} from "../features/user/userSlice"
 
 const Header = (props) => {
+    const dispatch = useDispatch()
+    const history = useNavigate()
+    const userName = useSelector(selectUserName)
+    const userPhoto = useSelector(selectUserPhoto)
+
     const handleAuth = () => {
         signInWithPopup(auth, provider)
             .then((result) => {
@@ -13,6 +26,7 @@ const Header = (props) => {
                 // The signed-in user info.
                 const user = result.user
                 // ...
+                setUser(user)
             })
             .catch((error) => {
                 // Handle Errors here.
@@ -26,38 +40,60 @@ const Header = (props) => {
             })
     }
 
+    const setUser = (user) => {
+        dispatch(
+            setUserLoginDetails({
+                name: user.displayName,
+                email: user.email,
+                photo: user.photoURL,
+            })
+        )
+    }
+
     return (
         <Navigation>
             <Logo>
                 <img src="/images/logo.svg" alt="Disney+ Logo" />
             </Logo>
-            <Menu>
-                <a href="/">
-                    <img src="/images/home-icon.svg" alt="Home" />
-                    <span>Home</span>
-                </a>
-                <a>
-                    <img src="/images/search-icon.svg" alt="Search" />
-                    <span>Search</span>
-                </a>
-                <a>
-                    <img src="/images/watchlist-icon.svg" alt="Watchlist" />
-                    <span>Watchlist</span>
-                </a>
-                <a>
-                    <img src="/images/original-icon.svg" alt="Originals" />
-                    <span>Originals</span>
-                </a>
-                <a>
-                    <img src="/images/movie-icon.svg" alt="Movies" />
-                    <span>Movies</span>
-                </a>
-                <a>
-                    <img src="/images/series-icon.svg" alt="Series" />
-                    <span>Series</span>
-                </a>
-            </Menu>
-            <Login onClick={handleAuth}>Login</Login>
+            {!userName ? (
+                <Login onClick={handleAuth}>Login</Login>
+            ) : (
+                <>
+                    <Menu>
+                        <a href="/">
+                            <img src="/images/home-icon.svg" alt="Home" />
+                            <span>Home</span>
+                        </a>
+                        <a>
+                            <img src="/images/search-icon.svg" alt="Search" />
+                            <span>Search</span>
+                        </a>
+                        <a>
+                            <img
+                                src="/images/watchlist-icon.svg"
+                                alt="Watchlist"
+                            />
+                            <span>Watchlist</span>
+                        </a>
+                        <a>
+                            <img
+                                src="/images/original-icon.svg"
+                                alt="Originals"
+                            />
+                            <span>Originals</span>
+                        </a>
+                        <a>
+                            <img src="/images/movie-icon.svg" alt="Movies" />
+                            <span>Movies</span>
+                        </a>
+                        <a>
+                            <img src="/images/series-icon.svg" alt="Series" />
+                            <span>Series</span>
+                        </a>
+                    </Menu>
+                    <UserBubble src={userPhoto} alt={userName} />
+                </>
+            )}
         </Navigation>
     )
 }
@@ -150,6 +186,10 @@ const Menu = styled.div`
     @media (max-width: 768px) {
         display: none;
     }
+`
+
+const UserBubble = styled.img`
+    height: 100%;
 `
 
 const Login = styled.a`
