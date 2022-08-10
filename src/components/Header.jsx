@@ -250,11 +250,11 @@ const DropDown = styled.div`
     background: rgb(19, 19, 19);
     border: 1px solid rgba(151, 151, 151, 0.34);
     border-radius: 4px;
-    box-shadow: rgb(0 0 0 / 50%) 0 0 18px 0;
+    box-shadow: rgb(0 0 0 / 50%) 0px 0px 18px 0px;
     padding: 10px;
     font-size: 14px;
     letter-spacing: 3px;
-    width: 100%;
+    width: 100px;
     opacity: 0;
 `
 
