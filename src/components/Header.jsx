@@ -1,5 +1,10 @@
 import styled from "styled-components"
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth"
+import {
+    signInWithPopup,
+    GoogleAuthProvider,
+    onAuthStateChanged,
+    signOut,
+} from "firebase/auth"
 import { auth, provider } from "../firebase"
 import { useDispatch, useSelector } from "react-redux/es/exports"
 import { useNavigate } from "react-router-dom"
@@ -8,6 +13,7 @@ import {
     selectUserPhoto,
     selectUserLoginDetails,
     setUserLoginDetails,
+    setSignOutState,
 } from "../features/user/userSlice"
 import { useEffect } from "react"
 
@@ -18,7 +24,7 @@ const Header = (props) => {
     const userPhoto = useSelector(selectUserPhoto)
 
     useEffect(() => {
-        auth.onAuthStateChanged(async (user) => {
+        onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUser(user)
                 navigate("/home")
@@ -27,27 +33,41 @@ const Header = (props) => {
     }, [userName])
 
     const handleAuth = () => {
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential =
-                    GoogleAuthProvider.credentialFromResult(result)
-                const token = credential.accessToken
-                // The signed-in user info.
-                const user = result.user
-                // ...
-                setUser(user)
-            })
-            .catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code
-                const errorMessage = error.message
-                // The email of the user's account used.
-                const email = error.customData.email
-                // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error)
-                // ...
-            })
+        if (!userName) {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    const credential =
+                        GoogleAuthProvider.credentialFromResult(result)
+                    const token = credential.accessToken
+                    // The signed-in user info.
+                    const user = result.user
+                    // ...
+                    setUser(user)
+                })
+                .catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code
+                    const errorMessage = error.message
+                    // The email of the user's account used.
+                    const email = error.customData.email
+                    // The AuthCredential type that was used.
+                    const credential =
+                        GoogleAuthProvider.credentialFromError(error)
+                    // ...
+                })
+        } else if (userName) {
+            signOut(auth)
+                .then(() => {
+                    // Sign-out successful.
+                    dispatch(setSignOutState())
+                    navigate("/")
+                })
+                .catch((error) => {
+                    // An error happened.
+                    alert(error.message)
+                })
+        }
     }
 
     const setUser = (user) => {
@@ -101,7 +121,12 @@ const Header = (props) => {
                             <span>Series</span>
                         </a>
                     </Menu>
-                    <UserBubble src={userPhoto} alt={userName} />
+                    <SignOut>
+                        <UserAvatar src={userPhoto} alt={userName} />
+                        <DropDown>
+                            <span onClick={handleAuth}>Sign out</span>
+                        </DropDown>
+                    </SignOut>
                 </>
             )}
         </Navigation>
@@ -198,7 +223,7 @@ const Menu = styled.div`
     }
 `
 
-const UserBubble = styled.img`
+const UserAvatar = styled.img`
     height: 100%;
 `
 
@@ -215,5 +240,43 @@ const Login = styled.a`
         color: #000;
         background-color: #f9f9f9;
         border-color: transparent;
+    }
+`
+
+const DropDown = styled.div`
+    position: absolute;
+    top: 48px;
+    right: 0px;
+    background: rgb(19, 19, 19);
+    border: 1px solid rgba(151, 151, 151, 0.34);
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 50%) 0 0 18px 0;
+    padding: 10px;
+    font-size: 14px;
+    letter-spacing: 3px;
+    width: 100%;
+    opacity: 0;
+`
+
+const SignOut = styled.div`
+    position: relative;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+
+    ${UserAvatar} {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+    }
+
+    &:hover {
+        ${DropDown} {
+            opacity: 1;
+            transition-duration: 1s;
+        }
     }
 `
