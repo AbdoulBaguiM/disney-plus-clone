@@ -9,12 +9,22 @@ import {
     selectUserLoginDetails,
     setUserLoginDetails,
 } from "../features/user/userSlice"
+import { useEffect } from "react"
 
 const Header = (props) => {
     const dispatch = useDispatch()
-    const history = useNavigate()
+    const navigate = useNavigate()
     const userName = useSelector(selectUserName)
     const userPhoto = useSelector(selectUserPhoto)
+
+    useEffect(() => {
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                setUser(user)
+                navigate("/home")
+            }
+        })
+    }, [userName])
 
     const handleAuth = () => {
         signInWithPopup(auth, provider)
