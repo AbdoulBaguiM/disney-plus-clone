@@ -1,11 +1,11 @@
 import styled from "styled-components"
+import Carousel from "./Carousel"
 
 const Home = () => {
     return (
         <Container>
             <h2>Hello</h2>
-            <h2>Hello</h2>
-            <h2>Hello</h2>
+            <Carousel />
         </Container>
     )
 }
