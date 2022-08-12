@@ -62,7 +62,7 @@ const Home = (props) => {
                     recommend: recommends,
                     newDisney: newDisney,
                     original: originals,
-                    trending: trends,
+                    trends: trends,
                 })
             )
         }
