@@ -1,6 +1,9 @@
 import styled from "styled-components"
 import ImgSlider from "./ImgSlider"
+import Novelties from "./Novelties"
+import Originals from "./Originals"
 import Recommends from "./Recommends"
+import Trends from "./Trends"
 import Viewers from "./Viewers"
 
 const Home = () => {
@@ -9,6 +12,9 @@ const Home = () => {
             <ImgSlider />
             <Viewers />
             <Recommends />
+            <Novelties />
+            <Originals />
+            <Trends />
         </Container>
     )
 }
