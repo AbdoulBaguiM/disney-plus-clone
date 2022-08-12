@@ -25,31 +25,21 @@ const Home = (props) => {
         async function fetchMovies() {
             const querySnapshot = await getDocs(collection(db, "movies"))
             querySnapshot.forEach((doc) => {
-                console.log(doc.data().type)
                 switch (doc.data().type) {
                     case "recommend":
-                        recommends = [
-                            ...recommends,
-                            { id: doc.id, ...doc.data() },
-                        ]
+                        recommends.push({ id: doc.id, ...doc.data() })
                         break
 
                     case "new":
-                        newDisney = [
-                            ...newDisney,
-                            { id: doc.id, ...doc.data() },
-                        ]
+                        newDisney.push({ id: doc.id, ...doc.data() })
                         break
 
                     case "original":
-                        originals = [
-                            ...originals,
-                            { id: doc.id, ...doc.data() },
-                        ]
+                        originals.push({ id: doc.id, ...doc.data() })
                         break
 
                     case "trending":
-                        trends = [...trends, { id: doc.id, ...doc.data() }]
+                        trends.push({ id: doc.id, ...doc.data() })
                         break
 
                     default:
