@@ -8,6 +8,7 @@ import Viewers from "./Viewers"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import db from "../firebase"
+import { collection, getDocs } from "firebase/firestore"
 import { setMovies } from "../features/movie/movieSlice"
 import { selectUserName } from "../features/user/userSlice"
 
@@ -21,9 +22,9 @@ const Home = (props) => {
     let trends = []
 
     useEffect(() => {
-        db.collection("movies").onSnapshot((snapshot) => {
-            snapshot.docs.map((doc) => {
-                console.log(recommends)
+        async function fetchMovies() {
+            const querySnapshot = await getDocs(collection(db, "movies"))
+            querySnapshot.forEach((doc) => {
                 switch (doc.data().type) {
                     case "recommend":
                         recommends = [
@@ -60,11 +61,13 @@ const Home = (props) => {
                     recommend: recommends,
                     newDisney: newDisney,
                     original: originals,
-                    trends: trends,
+                    trending: trends,
                 })
             )
-        })
+        }
+        fetchMovies()
     }, [userName])
+
     return (
         <Container>
             <ImgSlider />
