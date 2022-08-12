@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import ImgSlider from "./ImgSlider"
-import Novelties from "./Novelties"
+import NewDisney from "./NewDisney"
 import Originals from "./Originals"
 import Recommends from "./Recommends"
 import Trends from "./Trends"
@@ -25,6 +25,7 @@ const Home = (props) => {
         async function fetchMovies() {
             const querySnapshot = await getDocs(collection(db, "movies"))
             querySnapshot.forEach((doc) => {
+                console.log(doc.data().type)
                 switch (doc.data().type) {
                     case "recommend":
                         recommends = [
@@ -73,7 +74,7 @@ const Home = (props) => {
             <ImgSlider />
             <Viewers />
             <Recommends />
-            <Novelties />
+            <NewDisney />
             <Originals />
             <Trends />
         </Container>
