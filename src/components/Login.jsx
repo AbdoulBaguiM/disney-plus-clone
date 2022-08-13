@@ -84,9 +84,13 @@ const SignUp = styled.a`
     padding: 16.5px 0;
     border: 1px solid transparent;
     border-radius: 4px;
+    cursor: pointer;
 
     &:hover {
         background-color: #0483ee;
+        letter-spacing: 3px;
+        transform: scale(1.05);
+        transition-duration: 250ms;
     }
 `
 
