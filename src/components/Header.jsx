@@ -82,7 +82,9 @@ const Header = (props) => {
     return (
         <Navigation>
             <Logo>
-                <img src="/images/logo.svg" alt="Disney+ Logo" />
+                <a href="/home">
+                    <img src="/images/logo.svg" alt="Disney+ Logo" />
+                </a>
             </Logo>
             {!userName ? (
                 <Login onClick={handleAuth}>Login</Login>
@@ -234,6 +236,7 @@ const Login = styled.a`
     border-radius: 5px;
     letter-spacing: 1.5px;
     transition: all 200ms ease 0s;
+    cursor: pointer;
 
     &:hover {
         color: #000;
