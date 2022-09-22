@@ -55,6 +55,63 @@ const Login = (props) => {
                     </Element>
                 </Container2>
             </USP>
+            <Watch>
+                <Watchway>
+                    <h3>Watch the way you want</h3>
+                    <span>
+                        Discover the world's greatest stories, all in one place.
+                    </span>
+                    <img src="/images/watch.png" alt="The way you want" />
+                </Watchway>
+                <Watchway>
+                    <h3>Exclusive originals</h3>
+                    <span>
+                        TV series, movies and documentaries you can't see
+                        anywhere else, from the world's greatest storytellers.
+                    </span>
+                    <img src="/images/exclusive.png" alt="Exclusive" />
+                </Watchway>
+                <Watchway>
+                    <h3>Compatible devices</h3>
+                    <Devices>
+                        <Device>
+                            <img src="/images/tv.png" alt="TV" />
+                            <h4>TV</h4>
+                            <span>
+                                <ul>
+                                    <li>Amazon Fire TV</li>
+                                    <li>Android TV</li>
+                                    <li>AppleTV</li>
+                                    <li>Chromecast</li>
+                                    <li>LG TV</li>
+                                    <li>Samsung</li>
+                                </ul>
+                            </span>
+                        </Device>
+                        <Device>
+                            <img src="/images/computer.png" alt="Computer" />
+                            <h4>Computer</h4>
+                            <span>
+                                <ul>
+                                    <li>Chrome OS</li>
+                                    <li>MacOS</li>
+                                    <li>Windows PC</li>
+                                </ul>
+                            </span>
+                        </Device>
+                        <Device>
+                            <img src="/images/mobile.png" alt="Mobile" />
+                            <h4>Mobile and Tablets</h4>
+                            <span>
+                                <ul>
+                                    <li>Android phones and Tablets</li>
+                                    <li>iPhone and iPad</li>
+                                </ul>
+                            </span>
+                        </Device>
+                    </Devices>
+                </Watchway>
+            </Watch>
         </Container>
     )
 }
@@ -66,6 +123,7 @@ const Container = styled.section`
     flex-direction: column;
     text-align: center;
     height: 100vh;
+    font-family: "InterRegular";
 `
 
 const Content = styled.div`
@@ -87,7 +145,7 @@ const BackgroundImage = styled.div`
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url("/images/login-background.jpg");
+    background-image: url("/images/login-background.png");
     position: fixed;
     top: 0;
     right: 0;
@@ -149,19 +207,25 @@ const Flyer = styled.img`
 const USP = styled.div`
     height: auto;
     padding: 100px;
-    background-color: black;
+    background-color: #0f1014;
+    border-top: 5px solid #0d2551;
+    border-bottom: 5px solid #0d2551;
 `
 
 const Container2 = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 100px;
+    grid-template-columns: repeat(3, minmax(91px, 1fr));
+    grid-gap: 32px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(1, minmax(91px, 1fr));
+    }
 `
 
 const Element = styled.div`
     display: grid;
     grid-template-rows: repeat(3, 80px);
-    grid-gap: 10px;
+    grid-gap: 12px;
 
     span {
         font-size: 20px;
@@ -182,4 +246,70 @@ const UspDescription = styled.span`
     letter-spacing: 0;
     line-height: 28px;
     color: #8f98b2;
+`
+const Watch = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: #0f1014;
+`
+
+const Watchway = styled.div`
+    h3 {
+        font-size: 32px;
+        font-weight: 600;
+        letter-spacing: -0.4px;
+        line-height: 42px;
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-top: 80px;
+    }
+
+    span {
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 28px;
+        color: #8f98b2;
+    }
+
+    img {
+        height: auto;
+        max-width: 80%;
+        padding-left: 40px;
+        padding-right: 40px;
+        margin-top: 30px;
+    }
+`
+
+const Devices = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, minmax(91px, 1fr));
+    grid-gap: 32px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(1, minmax(91px, 1fr));
+    }
+`
+
+const Device = styled.div`
+    align-content: flex-start;
+    display: grid;
+    gap: var(12px);
+    text-align: center;
+
+    h4 {
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: -0.6px;
+        line-height: 32px;
+        text-align: center;
+    }
+
+    ul {
+        text-align: center;
+        list-style: none;
+    }
 `
