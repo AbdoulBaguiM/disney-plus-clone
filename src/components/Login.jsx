@@ -10,7 +10,7 @@ const Login = (props) => {
                         32.99 MAD per month or 328.99 MAD per year
                     </Description>
                     <SignUp>Sign Up Now {">"} </SignUp>
-                    <Flyer src="/images/cta-logo-two.png" alt="" />
+                    {/* <Flyer src="/images/cta-logo-two.png" alt="" /> */}
                 </Section>
                 <BackgroundImage />
             </Content>
@@ -119,7 +119,7 @@ const Container = styled.section`
     display: flex;
     flex-direction: column;
     text-align: center;
-    height: 100vh;
+    height: auto;
     font-family: "InterRegular";
 `
 
@@ -133,7 +133,9 @@ const Content = styled.div`
     align-items: center;
     flex-direction: column;
     padding: 80px 40px;
-    height: 100%;
+    -webkit-box-shadow: inset 10px -200px 97px 43px #101218;
+    -moz-box-shadow: inset 10px -200px 97px 43px #101218;
+    box-shadow: inset 10px -200px 97px 43px #101218;
 `
 
 const BackgroundImage = styled.div`
