@@ -22,6 +22,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Preview
 
-A demo is available to you [here](https://disney-plus-clone-dikucyr6w-abdoulbaguim.vercel.app/). Log in using your google account and enjoy 🚀.
+A demo is available to you [here](https://disney-plus-clone-jet.vercel.app/). Log in using your google account and enjoy 🚀.
 
 ![Incredibles film page](https://github.com/AbdoulBaguiM/disney-plus-clone/blob/main/public/FilmPage.png)
