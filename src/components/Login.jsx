@@ -6,13 +6,10 @@ const Login = (props) => {
             <Content>
                 <Section>
                     <Logo src="/images/cta-logo-one.svg" alt="" />
-                    <SignUp>Sign Up Now {">"} </SignUp>
                     <Description>
-                        Get Premier Access to Raya and the Last Dragon for an
-                        additional fee with a Disney+ subscription. As of
-                        03/26/23, the price of Disney+ and The Disney Bundle
-                        will increase by $1.
+                        32.99 MAD per month or 328.99 MAD per year
                     </Description>
+                    <SignUp>Sign Up Now {">"} </SignUp>
                     <Flyer src="/images/cta-logo-two.png" alt="" />
                 </Section>
                 <BackgroundImage />
@@ -127,13 +124,12 @@ const Container = styled.section`
 `
 
 const Content = styled.div`
-    margin-bottom: 10vw;
     width: 100%;
     position: relative;
     min-height: 100vh;
     box-sizing: border-box;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     flex-direction: column;
     padding: 80px 40px;
@@ -171,7 +167,7 @@ const Logo = styled.img`
 const SignUp = styled.a`
     font-weight: bold;
     color: #f9f9f9;
-    background-color: #0063e5;
+    background: linear-gradient(93.87deg, #095ae6, #062794);
     margin-bottom: 12px;
     width: 100%;
     letter-spacing: 1.5px;
@@ -182,19 +178,18 @@ const SignUp = styled.a`
     cursor: pointer;
 
     &:hover {
-        background-color: #0483ee;
-        letter-spacing: 3px;
-        transform: scale(1.05);
-        transition-duration: 250ms;
+        transform: scale(1.02);
+        transition: all 0.3s ease-in-out;
     }
 `
 
 const Description = styled.p`
     color: hsla(0, 0%, 95.3%, 1);
-    font-size: 11px;
     margin: 0 0 24px;
-    line-height: 1.5;
-    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    line-height: 28px;
 `
 const Flyer = styled.img`
     max-width: 600px;
@@ -257,6 +252,7 @@ const Watch = styled.div`
 `
 
 const Watchway = styled.div`
+    width: auto;
     h3 {
         font-size: 32px;
         font-weight: 600;
@@ -287,9 +283,10 @@ const Watchway = styled.div`
 const Devices = styled.div`
     display: grid;
     grid-template-columns: repeat(3, minmax(91px, 1fr));
-    grid-gap: 32px;
+    column-gap: 80px;
+    margin-top: 80px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 721px) {
         grid-template-columns: repeat(1, minmax(91px, 1fr));
     }
 `
@@ -297,19 +294,34 @@ const Devices = styled.div`
 const Device = styled.div`
     align-content: flex-start;
     display: grid;
-    gap: var(12px);
-    text-align: center;
+
+    @media (min-width: 721px) {
+        gap: 0;
+    }
 
     h4 {
         font-size: 20px;
         font-weight: 600;
         letter-spacing: -0.6px;
         line-height: 32px;
-        text-align: center;
     }
 
-    ul {
-        text-align: center;
-        list-style: none;
+    span {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        line-height: 32px;
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            li {
+                margin: 0 auto;
+            }
+        }
+    }
+
+    img {
+        margin: 0 auto;
     }
 `
