@@ -41,7 +41,6 @@ const Header = (props) => {
                     const token = credential.accessToken
                     // The signed-in user info.
                     const user = result.user
-                    // ...
                     setUser(user)
                 })
                 .catch((error) => {
@@ -53,7 +52,6 @@ const Header = (props) => {
                     // The AuthCredential type that was used.
                     const credential =
                         GoogleAuthProvider.credentialFromError(error)
-                    // ...
                 })
         } else if (userName) {
             signOut(auth)
@@ -80,57 +78,70 @@ const Header = (props) => {
     }
 
     return (
-        <Navigation>
-            <Logo>
-                <a href="/home">
-                    <img src="/images/logo.svg" alt="Disney+ Logo" />
-                </a>
-            </Logo>
+        <>
             {!userName ? (
-                <Login onClick={handleAuth}>Login</Login>
+                <LogHead>
+                    <Login onClick={handleAuth}>Log In</Login>
+                </LogHead>
             ) : (
-                <>
-                    <Menu>
-                        <a href="/">
-                            <img src="/images/home-icon.svg" alt="Home" />
-                            <span>Home</span>
+                <Navigation>
+                    <Logo>
+                        <a href="/home">
+                            <img src="/images/logo.svg" alt="Disney+ Logo" />
                         </a>
-                        <a>
-                            <img src="/images/search-icon.svg" alt="Search" />
-                            <span>Search</span>
-                        </a>
-                        <a>
-                            <img
-                                src="/images/watchlist-icon.svg"
-                                alt="Watchlist"
-                            />
-                            <span>Watchlist</span>
-                        </a>
-                        <a>
-                            <img
-                                src="/images/original-icon.svg"
-                                alt="Originals"
-                            />
-                            <span>Originals</span>
-                        </a>
-                        <a>
-                            <img src="/images/movie-icon.svg" alt="Movies" />
-                            <span>Movies</span>
-                        </a>
-                        <a>
-                            <img src="/images/series-icon.svg" alt="Series" />
-                            <span>Series</span>
-                        </a>
-                    </Menu>
+                    </Logo>
+                    <>
+                        <Menu>
+                            <a href="/">
+                                <img src="/images/home-icon.svg" alt="Home" />
+                                <span>Home</span>
+                            </a>
+                            <a>
+                                <img
+                                    src="/images/search-icon.svg"
+                                    alt="Search"
+                                />
+                                <span>Search</span>
+                            </a>
+                            <a>
+                                <img
+                                    src="/images/watchlist-icon.svg"
+                                    alt="Watchlist"
+                                />
+                                <span>Watchlist</span>
+                            </a>
+                            <a>
+                                <img
+                                    src="/images/original-icon.svg"
+                                    alt="Originals"
+                                />
+                                <span>Originals</span>
+                            </a>
+                            <a>
+                                <img
+                                    src="/images/movie-icon.svg"
+                                    alt="Movies"
+                                />
+                                <span>Movies</span>
+                            </a>
+                            <a>
+                                <img
+                                    src="/images/series-icon.svg"
+                                    alt="Series"
+                                />
+                                <span>Series</span>
+                            </a>
+                        </Menu>
+                    </>
                     <SignOut>
                         <UserAvatar src={userPhoto} alt={userName} />
                         <DropDown>
                             <span onClick={handleAuth}>Sign out</span>
                         </DropDown>
                     </SignOut>
-                </>
+                </Navigation>
             )}
-        </Navigation>
+        </>
     )
 }
 
@@ -229,19 +240,20 @@ const UserAvatar = styled.img`
 `
 
 const Login = styled.a`
-    text-transform: uppercase;
-    background-color: #090b13;
+    background: linear-gradient(93.87deg, #095ae6, #062794);
     padding: 8px 16px;
-    border: 1px solid white;
     border-radius: 5px;
     letter-spacing: 1.5px;
-    transition: all 200ms ease 0s;
     cursor: pointer;
+    font-weight: bold;
+    color: #f9f9f9;
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    font-family: "InterRegular";
 
     &:hover {
-        color: #000;
-        background-color: #f9f9f9;
-        border-color: transparent;
+        transform: scale(1.02);
+        transition: all 0.3s ease-in-out;
     }
 `
 
@@ -281,4 +293,17 @@ const SignOut = styled.div`
             transition-duration: 1s;
         }
     }
+`
+
+const LogHead = styled.nav`
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 36px;
+    letter-spacing: 16px;
+    z-index: 3;
 `
