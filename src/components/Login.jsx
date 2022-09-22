@@ -17,6 +17,44 @@ const Login = (props) => {
                 </Section>
                 <BackgroundImage />
             </Content>
+            <USP>
+                <Container2>
+                    <Element>
+                        <img
+                            src="/images/usp_entertainment.png"
+                            alt="Entertainment"
+                        />
+                        <span>The greatest stories ever told</span>
+                        <UspDescription>
+                            Disney+ is the streaming home of Disney, Pixar,
+                            Marvel, Star Wars, National Geographic, plus general
+                            entertainment from Star.
+                        </UspDescription>
+                    </Element>
+                    <Element>
+                        <img
+                            src="/images/usp_fav_device.png"
+                            alt="Favorite device"
+                        />
+                        <span>Experience Disney+ in Arabic</span>
+                        <UspDescription>
+                            Thousands of hours of TV serties, movies, and
+                            originals, from all the wonderful worlds of Disney+.
+                        </UspDescription>
+                    </Element>
+                    <Element>
+                        <img
+                            src="/images/usp_parental_control.png"
+                            alt="Parental control"
+                        />
+                        <span>Easy-to-use parental controls</span>
+                        <UspDescription>
+                            Keep your family safe with our intuitive parental
+                            controls.
+                        </UspDescription>
+                    </Element>
+                </Container2>
+            </USP>
         </Container>
     )
 }
@@ -24,7 +62,6 @@ const Login = (props) => {
 export default Login
 
 const Container = styled.section`
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -51,7 +88,7 @@ const BackgroundImage = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url("/images/login-background.jpg");
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
@@ -107,4 +144,42 @@ const Flyer = styled.img`
     display: inline-block;
     vertical-align: bottom;
     width: 100%;
+`
+
+const USP = styled.div`
+    height: auto;
+    padding: 100px;
+    background-color: black;
+`
+
+const Container2 = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 100px;
+`
+
+const Element = styled.div`
+    display: grid;
+    grid-template-rows: repeat(3, 80px);
+    grid-gap: 10px;
+
+    span {
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: -0.2px;
+        line-height: 28px;
+    }
+
+    img {
+        height: 3.75rem;
+        margin: 0 auto;
+    }
+`
+
+const UspDescription = styled.span`
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 28px;
+    color: #8f98b2;
 `
