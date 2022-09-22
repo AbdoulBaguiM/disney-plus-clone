@@ -90,49 +90,38 @@ const Header = (props) => {
                             <img src="/images/logo.svg" alt="Disney+ Logo" />
                         </a>
                     </Logo>
-                    <>
-                        <Menu>
-                            <a href="/">
-                                <img src="/images/home-icon.svg" alt="Home" />
-                                <span>Home</span>
-                            </a>
-                            <a>
-                                <img
-                                    src="/images/search-icon.svg"
-                                    alt="Search"
-                                />
-                                <span>Search</span>
-                            </a>
-                            <a>
-                                <img
-                                    src="/images/watchlist-icon.svg"
-                                    alt="Watchlist"
-                                />
-                                <span>Watchlist</span>
-                            </a>
-                            <a>
-                                <img
-                                    src="/images/original-icon.svg"
-                                    alt="Originals"
-                                />
-                                <span>Originals</span>
-                            </a>
-                            <a>
-                                <img
-                                    src="/images/movie-icon.svg"
-                                    alt="Movies"
-                                />
-                                <span>Movies</span>
-                            </a>
-                            <a>
-                                <img
-                                    src="/images/series-icon.svg"
-                                    alt="Series"
-                                />
-                                <span>Series</span>
-                            </a>
-                        </Menu>
-                    </>
+                    <Menu>
+                        <a href="/">
+                            <img src="/images/home-icon.svg" alt="Home" />
+                            <span>Home</span>
+                        </a>
+                        <a>
+                            <img src="/images/search-icon.svg" alt="Search" />
+                            <span>Search</span>
+                        </a>
+                        <a>
+                            <img
+                                src="/images/watchlist-icon.svg"
+                                alt="Watchlist"
+                            />
+                            <span>Watchlist</span>
+                        </a>
+                        <a>
+                            <img
+                                src="/images/original-icon.svg"
+                                alt="Originals"
+                            />
+                            <span>Originals</span>
+                        </a>
+                        <a>
+                            <img src="/images/movie-icon.svg" alt="Movies" />
+                            <span>Movies</span>
+                        </a>
+                        <a>
+                            <img src="/images/series-icon.svg" alt="Series" />
+                            <span>Series</span>
+                        </a>
+                    </Menu>
                     <SignOut>
                         <UserAvatar src={userPhoto} alt={userName} />
                         <DropDown>
@@ -185,6 +174,7 @@ const Menu = styled.div`
         display: flex;
         align-items: center;
         padding: 0 12px;
+        cursor: pointer;
 
         img {
             height: 20px;
@@ -296,14 +286,9 @@ const SignOut = styled.div`
 `
 
 const LogHead = styled.nav`
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 70px;
+    height: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     padding: 0 36px;
-    letter-spacing: 16px;
-    z-index: 3;
 `

@@ -40,5 +40,5 @@ a {
 @font-face {
     font-family: "InterRegular";
     src: local("InterRegular"),
-     url("./fonts/Inter/Inter-Regular.ttf") format("truetype");
-    }
+    url("./fonts/Inter/Inter-Regular.ttf") format("truetype");
+}

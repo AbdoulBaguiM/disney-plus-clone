@@ -55,9 +55,7 @@ const Login = (props) => {
             <Watch>
                 <Watchway>
                     <h3>Watch the way you want</h3>
-                    <span>
-                        Discover the world's greatest stories, all in one place.
-                    </span>
+                    <span>The world's greatest stories, all in one place.</span>
                     <img src="/images/watch.png" alt="The way you want" />
                 </Watchway>
                 <Watchway>
@@ -133,9 +131,9 @@ const Content = styled.div`
     align-items: center;
     flex-direction: column;
     padding: 80px 40px;
-    -webkit-box-shadow: inset 10px -200px 97px 43px #101218;
-    -moz-box-shadow: inset 10px -200px 97px 43px #101218;
-    box-shadow: inset 10px -200px 97px 43px #101218;
+    -webkit-box-shadow: inset 0 -200px 97px 0 #101218;
+    -moz-box-shadow: inset 0 -200px 97px 0 #101218;
+    box-shadow: inset 0 -200px 97px 0 #101218;
 `
 
 const BackgroundImage = styled.div`
@@ -193,13 +191,13 @@ const Description = styled.p`
     letter-spacing: -0.2px;
     line-height: 28px;
 `
-const Flyer = styled.img`
+/* const Flyer = styled.img`
     max-width: 600px;
     margin-bottom: 20px;
     display: inline-block;
     vertical-align: bottom;
     width: 100%;
-`
+` */
 
 const USP = styled.div`
     height: auto;
@@ -216,6 +214,7 @@ const Container2 = styled.div`
 
     @media (max-width: 768px) {
         grid-template-columns: repeat(1, minmax(91px, 1fr));
+        row-gap: 150px;
     }
 `
 
@@ -249,7 +248,6 @@ const Watch = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: auto;
     background-color: #0f1014;
 `
 
@@ -290,6 +288,7 @@ const Devices = styled.div`
 
     @media (max-width: 721px) {
         grid-template-columns: repeat(1, minmax(91px, 1fr));
+        row-gap: 100px;
     }
 `
 
